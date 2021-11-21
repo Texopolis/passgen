@@ -24,6 +24,10 @@ function App() {
       accountChangeHandler(result[0])
       setConnButtonText('Wallet Connected at:  ')
       setLoginBtnState(true)
+      setAppClass('AppLoggedIn')
+      setSeparatorClass('separatorLoggedIn')
+      setTitleClass('titleClassLoggedIn')
+      setAppDescriptionClass('appDescriptionClassLoggedIn')
     })
     }else{
       setConnButtonText('Need to Install Metamask')
@@ -38,7 +42,7 @@ function App() {
   const loginHandlerBtn=()=>{
     return(
       <div>
-        <button onClick={loginHandler} disabled={disableLoginBtn}>{connButtonText}{defaultAccount}</button>
+        <button onClick={loginHandler} disabled={disableLoginBtn} className="button loginButton">{connButtonText}{defaultAccount}</button>
       </div>
     )
   }
@@ -71,7 +75,7 @@ const hideHelp = () =>{
 const helpBtn= () =>{
 return(
     <div id="helpButton">
-        <button onClick={toggleHelp}>help</button>
+        <button onClick={toggleHelp} className="button">?</button>
         {helpDisplay?showHelp():hideHelp()}
     </div>
 )
@@ -104,7 +108,7 @@ return(
 
   const getResultBtn = () =>{
     return(
-      <button onClick={fetchRandomNumber}>get results</button>
+      <button onClick={fetchRandomNumber} className="button">get results</button>
     )
   }
 
@@ -150,13 +154,31 @@ for(let i=0, j=63, k=70;i<2;i++, j+=7, k+=7) {
   randomNumArr.push(specialSetArr[(newNewSpecialArr%specialSetArr.length)])
 }
 
+//suffle randomNumArr and return randomNumArrShuffled
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+let randomNumArrShuffled=shuffle(randomNumArr)
+
 const [showPass, setShowPass] = useState(false)
 
 const showPassBtn=()=>{
   return(
     <div id='showPassBtn'>
       {showPass?passDisplay():hidePassDisplay()}
-      <button onClick={toggleShowPass}>Show Password</button>
+      <button onClick={toggleShowPass} className="button">Show Password</button>
     </div>
   )
 }
@@ -168,17 +190,17 @@ showPass?setShowPass(false):setShowPass(true)
 const passDisplay=()=>{
   return(
     <div id='passwordContainer'>
-      <div className='passwordChar'>{randomNumArr[0]}</div>
-      <div className='passwordChar'>{randomNumArr[1]}</div>
-      <div className='passwordChar'>{randomNumArr[2]}</div>
-      <div className='passwordChar'>{randomNumArr[3]}</div>
-      <div className='passwordChar'>{randomNumArr[4]}</div>
-      <div className='passwordChar'>{randomNumArr[5]}</div>
-      <div className='passwordChar'>{randomNumArr[6]}</div>
-      <div className='passwordChar'>{randomNumArr[7]}</div>
-      <div className='passwordChar'>{randomNumArr[8]}</div>
-      <div className='passwordChar'>{randomNumArr[9]}</div>
-      <div className='passwordChar'>{randomNumArr[10]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[0]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[1]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[2]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[3]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[4]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[5]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[6]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[7]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[8]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[9]}</div>
+      <div className='passwordChar'>{randomNumArrShuffled[10]}</div>
     </div>
   )
 }
@@ -189,17 +211,50 @@ const hidePassDisplay=()=>{
   )
 }
 
-console.log('heyhey',randomNumArr)
+//button to copy to clipboard
+const copyToClipboard=()=>{
+  return(
+    <div>
+      <button onClick={() => {navigator.clipboard.writeText(randomNumArrShuffled.join(''))}} className="button">copy to clipboard</button>
 
+    </div>
+
+  )
+}
+
+console.log('heyhey',randomNumArrShuffled)
+
+const [appClass, setAppClass] = useState('App')
+const [separatorClass, setSeparatorClass] = useState('separator')
+const [titleClass, setTitleClass] = useState('title')
+const [appDescriptionClass, setAppDescriptionClass] = useState('appDescription')
 
   //App Display**********************
   return (
-    <div className="App">
-      <h1>helloworld</h1>
-      {loginHandlerBtn()}
-      {helpBtn()}
+    <div className={appClass}>
+      <div className="container">
+        <div className="header">
+          {loginHandlerBtn()}
+          {helpBtn()}
+        </div>
+        {/* <div className={separatorClass}></div> */}
+        <h1 className={titleClass}>Random Password Generator</h1>
+        <h2 className={appDescriptionClass}>A Web3 solution to
+          <span className="span r"> r</span>
+          <span className="span a">a</span>
+          <span className="span n1">n</span>
+          <span className="span d">d</span>
+          <span className="span o">o</span>
+          <span className="span m">m</span>
+          <span className="span n">n</span>
+          <span className="span e">e</span>
+          <span className="span s1">s</span>
+          <span className="span s">s</span>
+          . <br/><br/>Generate a new password in seconds with cryptographic proof of how that password was generated by leveraging the security and tamper-resistant properties of the Ethereum blockchain.</h2>
+      </div>
       {getResultBtn()}
       {showPassBtn()}
+      {copyToClipboard()}
     </div>
   );
 }

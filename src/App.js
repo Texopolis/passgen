@@ -15,6 +15,16 @@ function App() {
 
   // console.log({provider})
 
+  window.addEventListener('load', function() {
+    if (typeof web3 !== 'undefined') {
+      console.log('Web3 installed')
+    } else {
+      console.log('No Web3 detected')
+      alert("No Web3 Device Detected. Please install Metamask from www.metamask.io")
+    }
+  
+  });
+
 
   //Login Logic********************
   const loginHandler= ()=>{
@@ -26,7 +36,7 @@ function App() {
       setLoginBtnState(true)
       setLoginBtnClass('disabledBtn')
       setAppClass('AppLoggedIn')
-      setSeparatorClass('separatorLoggedIn')
+      // setSeparatorClass('separatorLoggedIn')
       setTitleClass('titleClassLoggedIn')
       setAppDescriptionClass('appDescriptionClassLoggedIn')
       setFooterClass('loggedInFooter')
@@ -61,7 +71,7 @@ helpDisplay ? setHelpDisplay(false) : setHelpDisplay(true)
 const showHelp = () =>{
 return(
 <div id='helpContainer'>
-    <div>this is where all the helpful info goes</div>
+    <div>In order to interact with blockchains, you need to use a wallet browser extension which will identify you as the owner of that wallet's address.</div>
     <div className="metamaskLink">
         <p>A free wallet extension for your browser is available from Metamask</p>
         <a href='https://metamask.io/'><img src={metaMaskIcon} alt='link to MetaMask'/></a>
@@ -100,13 +110,13 @@ return(
   let randomNum
   let tempRandomNum
   
+
   const fetchRandomNumber = async()=>{
     await contract.getRandomNumber()
     tempRandomNum = await contract.randomResult()
     randomNum=tempRandomNum.toString()
     console.log(randomNum)
     setContractRandomNum(randomNum)
-    // randomNum=0
     tempRandomNum=0
     setResultBtnDisabled(true)
     setResultBtnTxt('Randomness Retrieved Successfully')
@@ -119,8 +129,6 @@ return(
   const[resultBtnDisabled, setResultBtnDisabled]=useState(false)
   const[resultBtnTxt, setResultBtnTxt]=useState('Get Randomness From Blockchain')
   const[resultBtnClass, setResultBtnClass]=useState('button')
-  // const[resultBtnDisabled, setresultBtnDisabled]=useState('false')
-  // const[resultBtnDisabled, setresultBtnDisabled]=useState('false')
 
 
 
@@ -211,6 +219,7 @@ const toggleShowPass=()=>{
 
 const passDisplay=()=>{
   return(
+    <div>
     <div id='passwordContainer'>
       <div className='passwordChar'>{randomNumArrShuffled[0]}</div>
       <div className='passwordChar'>{randomNumArrShuffled[1]}</div>
@@ -223,6 +232,8 @@ const passDisplay=()=>{
       <div className='passwordChar'>{randomNumArrShuffled[8]}</div>
       <div className='passwordChar'>{randomNumArrShuffled[9]}</div>
       <div className='passwordChar'>{randomNumArrShuffled[10]}</div>
+    </div>
+    {copyToClipboard()}
     </div>
   )
 }
@@ -250,7 +261,7 @@ const [showPassDisplay, setPassDisplay]=useState(hidePassDisplay())
 const copyToClipboard=()=>{
   return(
     <div>
-      <button onClick={() => {navigator.clipboard.writeText(randomNumArrShuffled.join(''))}} className="button">copy to clipboard</button>
+      <button id='copyBtn' onClick={() => {navigator.clipboard.writeText(randomNumArrShuffled.join(''))}} className="button">copy to clipboard</button>
 
     </div>
 
@@ -260,7 +271,7 @@ const copyToClipboard=()=>{
 console.log('heyhey',randomNumArrShuffled)
 
 const [appClass, setAppClass] = useState('App')
-const [separatorClass, setSeparatorClass] = useState('separator')
+// const [separatorClass, setSeparatorClass] = useState('separator')
 const [titleClass, setTitleClass] = useState('title')
 const [appDescriptionClass, setAppDescriptionClass] = useState('appDescription')
 const [footerClass, setFooterClass] =useState('notLoggedInFooter')
@@ -297,7 +308,6 @@ const [bubbleDisplayClass, setBubbleDisplayClass] = useState('disableBubble')
       <div className={footerClass}>
         {getResultBtn()}
         {showPassBtn()}
-        {copyToClipboard()}
       </div>
     </div>
   );

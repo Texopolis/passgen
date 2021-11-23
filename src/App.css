@@ -28,16 +28,16 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  border:1px solid hotpink;
+  /* border:1px solid hotpink; */
   background: #0E0913;
-  background: -webkit-linear-gradient(bottom left, #0E0913, #5110AF);
-  background: -moz-linear-gradient(bottom left, #0E0913, #5110AF);
-  background: linear-gradient(to top right, #0E0913, #5110AF);}
+  background: -webkit-linear-gradient(bottom left, #0E0913, #260752);
+  background: -moz-linear-gradient(bottom left, #0E0913, #260752);
+  background: linear-gradient(to top right, #0E0913, #260752);}
 
 
 .container{
   height:100%;
-  border:1px solid black;
+  /* border:1px solid black; */
 }
 
 .title{
@@ -191,13 +191,13 @@ box-shadow: 2px 2px 10px white;
   width:90vw;
   top:30%;
   left:2vw;
-  border:1px solid red;
+  /* border:1px solid red; */
   padding:1em;
   justify-content: space-between;
 }
 
 .passwordChar{
-  border:1px solid green;
+  /* border:1px solid green; */
   font-size:12vw;
   font-weight: 200;
   font-family: 'Teko', sans-serif;
@@ -275,4 +275,30 @@ box-shadow: 2px 2px 10px white;
 @keyframes move1 {
   0% { transform: translate(0px, 0px)}
   100% { transform: translate(90%, 75%)}
+}
+
+#bubble3{
+  z-index: 0;
+  position:absolute;
+  left:50%;
+  top:540px;
+  overflow: hidden;
+  width: 375px;
+  height: 375px;
+  border-radius: 50%;
+  animation: move3 60s ease-in-out 1s infinite alternate;
+  box-shadow:
+    inset 0 0 50px rgba(255, 255, 255, 0.486),     
+    inset 20px 0 80px rgba(255, 0, 255, 0.459),   
+    inset -20px 0 80px rgba(0, 255, 255, 0.514),  
+    inset 20px 0 300px rgba(255, 0, 255, 0.473),  
+    inset -20px 0 300px rgba(0, 255, 255, 0.521), 
+    0 0 50px rgba(255, 255, 255, 0.507),          
+    -10px 0 80px rgba(255, 0, 255, 0.527),        
+    10px 0 80px rgba(0, 255, 255, 0.521);         
+}
+
+@keyframes move3 {
+  0% { transform: translate(0px, 0px)}
+  100% { transform: translate(70%, -75%)}
 }

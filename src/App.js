@@ -291,6 +291,7 @@ const [bubbleDisplayClass, setBubbleDisplayClass] = useState('disableBubble')
           <div className={bubbleDisplayClass}>
             <div id='bubble1'></div>
             <div id='bubble2'></div>
+            <div id='bubble3'></div>
           </div>
       </div>
       <div className={footerClass}>

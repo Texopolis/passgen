@@ -4,7 +4,8 @@ import { ethers } from 'ethers'
 import metaMaskIcon from './metamask.png'
 import ABI from './abi.json'
 import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import errorbackground from './errorbackground.png'
+// import { render } from '@testing-library/react';
 
 
 
@@ -31,16 +32,17 @@ function App() {
 
 
   const noWeb3=(
-      <div>
+      <div id='helpPage'>
+        <h1 className='helpTitle'>Cannot connect to Web3 Random Password Generator</h1>
         <div id='helpContainer'>
-          <div>In order to interact with blockchains, you need to use a wallet browser extension which will identify you as the owner of that wallet's address.
-          </div>
+          <h2> Error- no Web3 identity detected </h2>
+          <p>But no problem! We can fix that! <a href='https://metamask.io'>Metamask</a> is a free browser extension which allows you to interact with blockchains and securely store assets like NFTS and cryptocurrencies.</p>
           <div className="metamaskLink">
-              <p>A free wallet extension for your browser is available from Metamask</p>
-              <a href='https://metamask.io/'><img src={metaMaskIcon} alt='link to MetaMask'/></a>
+              <a href='https://metamask.io/'><img id='metaMaskImg' src={metaMaskIcon} alt='link to MetaMask'/></a>
           </div>
+          <p>Install metamask and reload this page to continue to Web3 Password Generator</p>
         </div>
-
+      <img id='errorBkgImg' src={errorbackground} alt='error Background Image'></img>
       </div>
     )
 
@@ -81,38 +83,38 @@ function App() {
   }
   
 //Help Popup***************
-const [helpDisplay, setHelpDisplay]= useState(false)
+// const [helpDisplay, setHelpDisplay]= useState(false)
 
-const toggleHelp= () =>{
-helpDisplay ? setHelpDisplay(false) : setHelpDisplay(true)
-}
+// const toggleHelp= () =>{
+// helpDisplay ? setHelpDisplay(false) : setHelpDisplay(true)
+// }
 
-const showHelp = () =>{
-return(
-<div id='helpContainer'>
-    <div>In order to interact with blockchains, you need to use a wallet browser extension which will identify you as the owner of that wallet's address.</div>
-    <div className="metamaskLink">
-        <p>A free wallet extension for your browser is available from Metamask</p>
-        <a href='https://metamask.io/'><img src={metaMaskIcon} alt='link to MetaMask'/></a>
-    </div>
-</div>
-)
-}
+// const showHelp = () =>{
+// return(
+// <div id='helpContainer'>
+//     <div>In order to interact with blockchains, you need to use a wallet browser extension which will identify you as the owner of that wallet's address.</div>
+//     <div className="metamaskLink">
+//         <p>A free wallet extension for your browser is available from Metamask</p>
+//         <a href='https://metamask.io/'><img src={metaMaskIcon} alt='link to MetaMask'/></a>
+//     </div>
+// </div>
+// )
+// }
 
-const hideHelp = () =>{
-    return(
-    <div></div>
- )
-}
+// const hideHelp = () =>{
+//     return(
+//     <div></div>
+//  )
+// }
 
-const helpBtn= () =>{
-return(
-    <div id="helpButton">
-        <button onClick={toggleHelp} className="button">?</button>
-        {helpDisplay?showHelp():hideHelp()}
-    </div>
-)
-}
+// const helpBtn= () =>{
+// return(
+//     <div id="helpButton">
+//         <button onClick={toggleHelp} className="button">?</button>
+//         {helpDisplay?showHelp():hideHelp()}
+//     </div>
+// )
+// }
 
 
 
@@ -302,28 +304,28 @@ const [bubbleDisplayClass, setBubbleDisplayClass] = useState('disableBubble')
       <div className="container">
         <div className="header">
           {loginHandlerBtn()}
-          {helpBtn()}
+          {/* {helpBtn()} */}
         </div>
         {/* <div className={separatorClass}></div> */}
-        <h1 className={titleClass}>Random Password Generator</h1>
-        <h2 className={appDescriptionClass}>A Web3 solution to
-          <span className="span r"> R</span>
-          <span className="span a">a</span>
-          <span className="span n1">N</span>
-          <span className="span d">d</span>
-          <span className="span o">o</span>
-          <span className="span m">m</span>
-          <span className="span n">n</span>
-          <span className="span e">e</span>
-          <span className="span s1">S</span>
-          <span className="span s">s</span>
+          <h1 className={titleClass}>Random Password Generator</h1>
+          <h2 className={appDescriptionClass}>A Web3 solution to
+            <span className="span r"> R</span>
+            <span className="span a">a</span>
+            <span className="span n1">N</span>
+            <span className="span d">d</span>
+            <span className="span o">o</span>
+            <span className="span m">m</span>
+            <span className="span n">n</span>
+            <span className="span e">e</span>
+            <span className="span s1">S</span>
+            <span className="span s">s</span>
           . <br/><br/>Generate a new password in seconds with cryptographic proof of how that password was generated by leveraging the security and tamper-resistant properties of the Ethereum blockchain.</h2>
-          <div className={bubbleDisplayClass}>
-            <div id='bubble1'></div>
-            <div id='bubble2'></div>
-            <div id='bubble3'></div>
-          </div>
-      </div>
+              <div className={bubbleDisplayClass}>
+                <div id='bubble1'></div>
+                <div id='bubble2'></div>
+                <div id='bubble3'></div>
+              </div>
+        </div>
       <div className={footerClass}>
         {getResultBtn()}
         {showPassBtn()}

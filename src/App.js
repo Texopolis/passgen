@@ -5,7 +5,6 @@ import metaMaskIcon from './metamask.png'
 import ABI from './abi.json'
 import ReactDOM from 'react-dom';
 import errorbackground from './errorbackground.png'
-// import { render } from '@testing-library/react';
 
 
 
@@ -17,7 +16,6 @@ function App() {
 
 
 
-  // console.log({provider})
 
   window.addEventListener('load', function() {
     if (typeof web3 !== 'undefined') {
@@ -42,7 +40,7 @@ function App() {
           </div>
           <p>Install metamask and reload this page to continue to Web3 Password Generator</p>
         </div>
-      <img id='errorBkgImg' src={errorbackground} alt='error Background Image'></img>
+      <img id='errorBkgImg' src={errorbackground} alt='error Background'></img>
       </div>
     )
 
@@ -57,7 +55,6 @@ function App() {
       setLoginBtnState(true)
       setLoginBtnClass('disabledBtn')
       setAppClass('AppLoggedIn')
-      // setSeparatorClass('separatorLoggedIn')
       setTitleClass('titleClassLoggedIn')
       setAppDescriptionClass('appDescriptionClassLoggedIn')
       setFooterClass('loggedInFooter')
@@ -82,43 +79,6 @@ function App() {
     )
   }
   
-//Help Popup***************
-// const [helpDisplay, setHelpDisplay]= useState(false)
-
-// const toggleHelp= () =>{
-// helpDisplay ? setHelpDisplay(false) : setHelpDisplay(true)
-// }
-
-// const showHelp = () =>{
-// return(
-// <div id='helpContainer'>
-//     <div>In order to interact with blockchains, you need to use a wallet browser extension which will identify you as the owner of that wallet's address.</div>
-//     <div className="metamaskLink">
-//         <p>A free wallet extension for your browser is available from Metamask</p>
-//         <a href='https://metamask.io/'><img src={metaMaskIcon} alt='link to MetaMask'/></a>
-//     </div>
-// </div>
-// )
-// }
-
-// const hideHelp = () =>{
-//     return(
-//     <div></div>
-//  )
-// }
-
-// const helpBtn= () =>{
-// return(
-//     <div id="helpButton">
-//         <button onClick={toggleHelp} className="button">?</button>
-//         {helpDisplay?showHelp():hideHelp()}
-//     </div>
-// )
-// }
-
-
-
-
 
   //Interact with Contract****************
   const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -136,7 +96,7 @@ function App() {
     await contract.getRandomNumber()
     tempRandomNum = await contract.randomResult()
     randomNum=tempRandomNum.toString()
-    console.log(randomNum)
+    // console.log(randomNum)
     setContractRandomNum(randomNum)
     tempRandomNum=0
     setResultBtnDisabled(true)
@@ -289,10 +249,9 @@ const copyToClipboard=()=>{
   )
 }
 
-console.log('heyhey',randomNumArrShuffled)
+// console.log('heyhey',randomNumArrShuffled)
 
 const [appClass, setAppClass] = useState('App')
-// const [separatorClass, setSeparatorClass] = useState('separator')
 const [titleClass, setTitleClass] = useState('title')
 const [appDescriptionClass, setAppDescriptionClass] = useState('appDescription')
 const [footerClass, setFooterClass] =useState('notLoggedInFooter')
@@ -304,9 +263,7 @@ const [bubbleDisplayClass, setBubbleDisplayClass] = useState('disableBubble')
       <div className="container">
         <div className="header">
           {loginHandlerBtn()}
-          {/* {helpBtn()} */}
         </div>
-        {/* <div className={separatorClass}></div> */}
           <h1 className={titleClass}>Random Password Generator</h1>
           <h2 className={appDescriptionClass}>A Web3 solution to
             <span className="span r"> R</span>

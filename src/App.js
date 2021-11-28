@@ -148,7 +148,7 @@ function App() {
 
 
   const[resultBtnDisabled, setResultBtnDisabled]=useState(false)
-  const[resultBtnTxt, setResultBtnTxt]=useState('Get Randomness From Blockchain')
+  const[resultBtnTxt, setResultBtnTxt]=useState('Initiate Randomness From Blockchain')
   const[resultBtnClass, setResultBtnClass]=useState('button')
 
 

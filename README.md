@@ -1,6 +1,6 @@
 WELCOME!
 
-This is a simple random password generator that produces a random password based on a 77 digit verifiably random string returned from the Ethereum blockchain.
+This is a simple random password generator that produces a random password based on a 77 digit verifiable random string returned from the Ethereum blockchain.
 
 The app is free to use and only requires that Metamask or other suitable web3 wallet/browser extension is installed.
 

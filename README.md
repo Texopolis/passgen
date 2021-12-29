@@ -8,6 +8,6 @@ It is possible that buttons will appear to be disabled but once the blocks have 
 
 Currently the app is working off a contract deployed to the Kovan testnet (make sure to set Metamask to point to the correct testnet) and test Eth can be found [here](https://gitter.im/kovan-testnet/faucet)
 
-Please feel free to give feedback or comments- this is a project I built after teaching myself how to code for the past 3 1/2 months.
+Please feel free to give feedback or comments!
 
 :)

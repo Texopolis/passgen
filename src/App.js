@@ -34,7 +34,7 @@ function App() {
         <h1 className='helpTitle'>Cannot connect to Web3 Random Password Generator</h1>
         <div id='helpContainer'>
           <h2> Error- no Web3 identity detected </h2>
-          <p>But no problem! We can fix that! <a href='https://metamask.io'>Metamask</a> is a free browser extension which allows you to interact with blockchains and securely store assets like NFTS and cryptocurrencies.</p>
+          <p> <a href='https://metamask.io'>Metamask</a> is a free browser extension which allows you to interact with blockchains and securely store assets like NFTS and cryptocurrencies.</p>
           <div className="metamaskLink">
               <a href='https://metamask.io/'><img id='metaMaskImg' src={metaMaskIcon} alt='link to MetaMask'/></a>
           </div>
